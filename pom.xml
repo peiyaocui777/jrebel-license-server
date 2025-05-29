@@ -6,10 +6,11 @@
 
   <groupId>com.vvvtimes.com</groupId>
   <artifactId>JrebelBrainsLicenseServerforJava</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.1</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
   </properties>
 
   <build>
@@ -17,12 +18,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <!-- 与Servlet版本对应 -->
-        <version>3.1</version>
+        <version>3.13.0</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-          <encoding>utf8</encoding>
+          <parameters>true</parameters>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
 
@@ -30,8 +31,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.7.0</version>
         <configuration>
+          <finalName>${project.artifactId}</finalName>
+          <appendAssemblyId>false</appendAssemblyId> <!-- 让自定义包名生效 -->
           <archive>
             <manifest>
               <mainClass>com.vvvtimes.server.MainServer</mainClass>
@@ -55,7 +58,6 @@
   </build>
 
   <dependencies>
-
     <dependency>
       <groupId>org.eclipse.jetty.aggregate</groupId>
       <artifactId>jetty-all</artifactId>
@@ -65,33 +67,32 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
+      <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15on</artifactId>
-      <version>1.58</version>
+      <artifactId>bcprov-jdk18on</artifactId>
+      <version>1.80</version>
     </dependency>
 
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.10</version>
+      <version>1.18.0</version>
     </dependency>
 
     <dependency>
-      <groupId>net.sf.json-lib</groupId>
-      <artifactId>json-lib</artifactId>
-      <version>2.4</version>
-      <classifier>jdk15</classifier>
+      <groupId>com.alibaba.fastjson2</groupId>
+      <artifactId>fastjson2</artifactId>
+      <version>2.0.57</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.1</version>
+      <version>3.17.0</version>
     </dependency>
 
   </dependencies>
