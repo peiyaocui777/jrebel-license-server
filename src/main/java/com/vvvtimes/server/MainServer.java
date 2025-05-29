@@ -18,8 +18,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class MainServer extends AbstractHandler {
-
-    private static final String EXAMPLE_GUID = UUID.randomUUID().toString();
+    
     private static final String SERVER_GUID = "a1b4aea8-b031-4302-b602-670a990272cb";
 
     private static Map<String, String> parseArguments(String[] args) {
@@ -60,7 +59,7 @@ public class MainServer extends AbstractHandler {
         System.out.println("License Server started at http://localhost:" + port);
         System.out.println("JetBrains Activation address was: http://localhost:" + port + "/");
         System.out.println("JRebel 7.1 and earlier version Activation address was: http://localhost:" + port + "/{tokenname}, with any email.");
-        System.out.println("JRebel 2018.1 and later version Activation address was: http://localhost:" + port + "/{guid}(eg:http://localhost:" + port + "/" + EXAMPLE_GUID + "), with any email.");
+        System.out.println("JRebel 2018.1 and later version Activation address was: http://localhost:" + port + "/{guid}(eg:http://localhost:" + port + "/" + getUUID() + "), with any email.");
 
         server.join();
     }
@@ -250,7 +249,7 @@ public class MainServer extends AbstractHandler {
         html.append("<p>JRebel 2018.1 and later version Activation address was: ")
                 .append(licenseUrl).append("/{guid}")
                 .append("(eg:<span style='color:red'>")
-                .append(licenseUrl).append("/").append(EXAMPLE_GUID)
+                .append(licenseUrl).append("/").append(getUUID())
                 .append("</span>), with any email.");
 
         html.append("<hr/>");
@@ -264,10 +263,10 @@ public class MainServer extends AbstractHandler {
         html.append("<p>JRebel 2018.1+ 版本激活地址: ")
                 .append(licenseUrl).append("/{guid}")
                 .append("(例如：<span style='color:red'>")
-                .append(licenseUrl).append("/").append(EXAMPLE_GUID)
+                .append(licenseUrl).append("/").append(getUUID())
                 .append("</span>), 以及任意邮箱地址。");
 
-        response.getWriter().println(html.toString());
+        response.getWriter().println(html);
     }
 
     // XML 转义工具函数
@@ -288,5 +287,9 @@ public class MainServer extends AbstractHandler {
             }
         }
         return out.toString();
+    }
+    
+    private static String getUUID(){
+        return UUID.randomUUID().toString();
     }
 }
