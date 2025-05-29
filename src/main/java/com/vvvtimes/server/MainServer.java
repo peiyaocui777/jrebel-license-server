@@ -70,7 +70,7 @@ public class MainServer extends AbstractHandler {
             throws IOException, ServletException {
         // 设置默认状态码
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-        System.out.println("target:"+target);
+        //System.out.println("target:"+target);
         if ("/".equals(target)) {
             indexHandler(baseRequest, request, response);
         } else if ("/jrebel/leases".equals(target) || "/agent/leases".equals(target)) {
@@ -147,7 +147,7 @@ public class MainServer extends AbstractHandler {
         if(StringUtils.isNotEmpty(request.getParameter("oldGuid"))){
             offline = true;
         }
-        System.out.println(((Request) request).getParameters());
+        //System.out.println(((Request) request).getParameters());
         String validFrom = "";
         String validUntil = "";
         
@@ -195,7 +195,6 @@ public class MainServer extends AbstractHandler {
             json.put("company", username);
             sendJsonResponse(response, json);
         }
-        System.out.println("---------------"+json.toJSONString());
     }
 
     private void releaseTicketHandler(Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException {
