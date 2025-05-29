@@ -150,16 +150,14 @@ public class MainServer extends AbstractHandler {
         String validFrom = "";
         String validUntil = "";
         
-        if (offline) {
-            String clientTime = request.getParameter("clientTime");
-            String offlineDays = request.getParameter("offlineDays");
-            try {
-                long clientTimeMillis = Long.parseLong(clientTime);
-                validFrom = clientTime;
-                validUntil = String.valueOf(clientTimeMillis + 180L * 24 * 60 * 60 * 1000);
-            } catch (NumberFormatException ignored) {
-                // 忽略非法输入，保持默认空值
-            }
+        String clientTime = request.getParameter("clientTime");
+        //String offlineDays = request.getParameter("offlineDays");
+        try {
+            long clientTimeMillis = Long.parseLong(clientTime);
+            validFrom = clientTime;
+            validUntil = String.valueOf(clientTimeMillis + 180L * 24 * 60 * 60 * 1000);
+        } catch (NumberFormatException ignored) {
+            // 忽略非法输入，保持默认空值
         }
 
         JSONObject json = new JSONObject();
@@ -182,8 +180,8 @@ public class MainServer extends AbstractHandler {
         json.put("company", "Administrator");
         json.put("orderId", "");
         json.put("zeroIds", new JSONArray());
-        json.put("licenseValidFrom", 1490544001000L);
-        json.put("licenseValidUntil", 1891839999000L);
+        json.put("licenseValidFrom", validFrom);
+        json.put("licenseValidUntil", validUntil);
 
         if (clientRandomness == null || username == null || guid == null) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
