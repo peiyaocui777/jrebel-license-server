@@ -1,11 +1,3 @@
----
-typora-copy-images-to: img
----
-
-
-
-
-
 # JrebelLicenseServerforJava
 
 搭建jrebel激活服务; 欢迎star。
