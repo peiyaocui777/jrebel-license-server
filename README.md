@@ -18,17 +18,31 @@
 3. 把jar包传送到云服务器上，然后进入到jar包所在目录，执行以下命令：
 
    ```bash
-   # nohup  命令   &     ：表示后台运行，这样保证ssh连接断开服务也是一直开着的
+   # nohup命令&：表示后台运行，这样保证ssh连接断开服务也是一直开着的
    nohup java -jar JrebelBrainsLicenseServerforJava.jar -p 8081 &
    ```
 
 4. 最后，可以检查下是否OK了，可以通过浏览器访问ip:8081或者使用命令查看：  `ps -ef | grep java`
 
+5. 也可以直接使用docker-compose.yml
+```yml
+version: 'latest'
+services:
+  jrebel:
+    image: wyx176/jrebel:latest
+    container_name: jrebel
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    ulimits:
+      nofile:
+        soft: 1024
+        hard: 1024
+```
 
+# Jrebel License Server for Java
 
-# Jrebel & Jet Brains License Server for Java
-
-A license server for Jrebel & JetBrains products, it also support JRebel for Android and XRebel.
+A license server for Jrebel products, it also support JRebel for Android and XRebel.
 
 ***
 Thank ilanyu
@@ -53,15 +67,20 @@ java -jar JrebelBrainsLicenseServerforJava.jar -p 8081
 default port is 8081.
 
 ## Docker
-Build image
-```
-mvn package 
-docker build -t jrebel-ls .
-```
-
-start container
-```
-docker run -d --name jrebel-ls --restart always -e PORT=9001 -p 9001:9001 jrebel-ls
+Usage docker-compose.yml
+```yml
+version: 'latest'
+services:
+  jrebel:
+    image: wyx176/jrebel:latest
+    container_name: jrebel
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    ulimits:
+      nofile:
+        soft: 1024
+        hard: 1024
 ```
 default port is 8081,you can modify it
 ## Support
@@ -71,10 +90,6 @@ Jrebel
 JRebel for Android
 
 XRebel
-
-JetBrains Products
-
-## Feedback
 
 
 

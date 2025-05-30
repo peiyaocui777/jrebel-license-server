@@ -1,7 +1,9 @@
-FROM java:8-jre-alpine
+FROM openjdk:8-jdk-alpine
 
-ENV PORT 8081
+EXPOSE 8081
 
-ADD target/JrebelBrainsLicenseServerforJava.jar /JrebelBrains.jar
-CMD java -jar /JrebelBrains.jar -p $PORT
+LABEL maintainer="github.com/wyx176"
+
+ADD target/JrebelBrainsLicenseServerforJava.jar /opt/jrebel.jar
+CMD java -jar /opt/jrebel.jar -p 8081
 
