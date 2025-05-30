@@ -1,6 +1,7 @@
 # JrebelLicenseServerforJava
 
-搭建jrebel激活服务; 欢迎star。
+- 搭建jrebel激活服务; 欢迎star。
+- 运行环境：java 1.8
 
 
 

@@ -238,9 +238,7 @@ public class MainServer extends AbstractHandler {
 
         StringBuilder html = new StringBuilder("<h3>使用说明（Instructions for use）</h3>");
         html.append("<hr/>");
-        html.append("<h1>Hello,This is a Jrebel & JetBrains License Server!</h1>");
-        html.append("<p>License Server started at ").append(licenseUrl);
-        html.append("<p>JetBrains Activation address was: <span style='color:red'>").append(licenseUrl).append("/");
+        html.append("<h1>Hello,This is a Jrebel License Server!</h1>");
         html.append("<p>JRebel 7.1 and earlier version Activation address was: <span style='color:red'>")
                 .append(licenseUrl).append("/{tokenname}")
                 .append("</span>, with any email.");
@@ -252,9 +250,7 @@ public class MainServer extends AbstractHandler {
 
         html.append("<hr/>");
 
-        html.append("<h1>Hello，此地址是 Jrebel & JetBrains License Server!</h1>");
-        html.append("<p>JetBrains许可服务器激活地址 ").append(licenseUrl);
-        html.append("<p>JetBrains激活地址是: <span style='color:red'>").append(licenseUrl).append("/");
+        html.append("<h1>Hello，此地址是 Jrebel License Server!</h1>");
         html.append("<p>JRebel 7.1 及旧版本激活地址: <span style='color:red'>")
                 .append(licenseUrl).append("/{tokenname}")
                 .append("</span>, 以及任意邮箱地址。");
