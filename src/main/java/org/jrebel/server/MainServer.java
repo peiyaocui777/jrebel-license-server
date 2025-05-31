@@ -1,9 +1,9 @@
-package com.vvvtimes.server;
+package org.jrebel.server;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.vvvtimes.JrebelUtil.JrebelSign;
-import com.vvvtimes.util.rsasign;
+import org.jrebel.util.JrebelSign;
+import org.jrebel.util.rsasign;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
@@ -46,10 +46,10 @@ public class MainServer extends AbstractHandler {
 
     public static void main(String[] args) throws Exception {
         Map<String, String> arguments = parseArguments(args);
-        String port = arguments.getOrDefault("p", "8081");
+        String port = arguments.getOrDefault("p", "9009");
 
         if (!port.matches("\\d+")) {
-            port = "8081";
+            port = "9009";
         }
 
         Server server = new Server(Integer.parseInt(port));
@@ -57,7 +57,6 @@ public class MainServer extends AbstractHandler {
         server.start();
 
         System.out.println("License Server started at http://localhost:" + port);
-        System.out.println("JetBrains Activation address was: http://localhost:" + port + "/");
         System.out.println("JRebel 7.1 and earlier version Activation address was: http://localhost:" + port + "/{tokenname}, with any email.");
         System.out.println("JRebel 2018.1 and later version Activation address was: http://localhost:" + port + "/{guid}(eg:http://localhost:" + port + "/" + getUUID() + "), with any email.");
 

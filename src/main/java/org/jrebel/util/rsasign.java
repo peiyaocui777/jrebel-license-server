@@ -1,4 +1,4 @@
-package com.vvvtimes.util;
+package org.jrebel.util;
 
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Primitive;
@@ -77,7 +77,7 @@ public class rsasign {
         }
         return null;
     }
-	    
+	   
     //传入秘钥为PKCS#8私钥非加密格式
 	//私钥签名程序，privateKey是私钥base64编码字符串，即私钥文件数据中，中间的主体部分
 	public static String Sign2(byte[] content, String privateKey) {
